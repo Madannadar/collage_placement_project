@@ -1,0 +1,94 @@
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 1rem;
+}
+.nav-links a {
+  position: relative;         /* Required for pseudo-elements */
+  display: inline-block;      /* Ensure proper spacing for links */
+  padding: 8px 12px;          /* Add padding for better click area */
+  color: inherit;             /* Default color */
+  text-decoration: none;      /* Remove underlines */
+  overflow: hidden;           /* Hide pseudo-element overflow */
+  transition: color 0.3s;     /* Smooth color transition */
+}
+
+.nav-links a::before {
+  content: "";                /* Empty content for pseudo-element */
+  position: absolute;         /* Position relative to the link */
+  bottom: 0;                  /* Start at the bottom */
+  left: 0;                    /* Start from the left */
+  width: 0;                   /* Initially, no width */
+  height: 100%;               /* Full height of the link */
+  background: #f8df00;        /* Background color for the animation */
+  transition: width 0.4s ease; /* Smooth animation for width */
+  z-index: -1;                /* Place it behind the text */
+}
+
+.nav-links a:hover,
+.nav-links a:active,
+.nav-links a.active {
+  color: #292929;             /* Change text color on hover/click */
+}
+
+.nav-links a:active::before,
+.nav-links a.active::before {
+  width: 100%;                /* Expand background fully on click */
+}
+
+
+.nav-links button {
+  cursor: pointer;
+  border: 1px solid #292929;
+  color: #292929;
+  background: transparent;
+  padding: 0.5rem;
+  font: inherit;
+}
+
+.nav-links button:focus {
+  outline: none;
+}
+
+.nav-links button:hover,
+.nav-links button:active {
+  background: #292929;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    flex-direction: row;
+  }
+
+  .nav-links li {
+    margin: 0 0.5rem;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-links button {
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+  }
+  
+  .nav-links button:hover,
+  .nav-links button:active {
+    background: #f8df00;
+    color: #292929;
+  }
+}
